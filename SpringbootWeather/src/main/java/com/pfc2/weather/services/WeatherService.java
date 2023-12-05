@@ -37,7 +37,7 @@ public class WeatherService implements IWeatherServices {
 
 
 	@Override
-	public WeatherHistory getWeather(Double lat, Double lon) {
+	public  WeatherHistory getWeather(Double lat, Double lon) {
 
 		return repositorio.getHistory(lat, lon);
 	}
@@ -49,6 +49,8 @@ public class WeatherService implements IWeatherServices {
 		{
 			
 			WeatherHistory whistory= repositorio.getHistory(request.getLat(), request.getLon());
+			
+			//WeatherHistory whistory=whistoryList.get(whistoryList.size());
 			Date fecha=new Date();
 			long diff=0;
 			String obj=clienteRest.getForObject("https://api.openweathermap.org/data/2.5/weather?lat="+request.getLat()+"&lon="+request.getLon()+"&appid="+token,String.class);

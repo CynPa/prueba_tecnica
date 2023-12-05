@@ -1,5 +1,7 @@
 package com.pfc2.weather.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +51,8 @@ public class WeatherController {
 			}
 		} catch (Exception e) {
 			logger.error("=============Internal Server Error :"+request.getLat()+" lon:"+request.getLon()+"================== ");
+			logger.error(e.toString());
+
 
 			errorArray[0] = "InternalServerError";
 			WeatherError error = WeatherError.builder().code("503").errors(errorArray).build();
